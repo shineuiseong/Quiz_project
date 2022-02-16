@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { PinkButton } from './components/PinkButton'
-import { next } from './store/modules/score'
+import { next, reset } from './store/modules/score'
 import styled from 'styled-components'
 import { Quiz } from './components/Quiz'
 
@@ -28,6 +28,7 @@ const Img = styled.img`
 const Score = styled.div`
   font-size: 4em;
   color: #f92b46;
+  margin-bottom: 30px;
 `
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
         <Main>
           <Header>당신의 수도 퀴즈 점수는??</Header>
           <Score>{score}</Score>
+          <PinkButton text="다시 시작하기" clickEvent={() => dispatch(reset())}></PinkButton>
         </Main>
       )}
     </>
