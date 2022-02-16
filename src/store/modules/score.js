@@ -1,18 +1,15 @@
-//퀴즈를 풀면 정답 -> 점수 획득
-//오답인 경우 -> 점수 획득이 없음
+// 퀴즈를 풀면 정답 -> 점수 획득
+// 오답 -> 점수 획득 X
 
-//상태 => 사용자의 현재점수 (score)
-//액션 =>   정답인지 아닌지 판별 , 정답 => 점수 ++
+// 상태: 사용자의 현재 점수(score)
+// 액션: 정답인지 아닌지 판별, 정답 => 점수++;
 
-// 위에 방식대로가 아니라 이런방법도있음
-// 상태: 사용자가 응답한 정답목록 []  , 액션: 정답목록에 하나하나 추가
-
-//액션 타입(문자열)
+// 액션 타입(문자열)
 const CHECK_CORRECT = 'score/CHECK_CORRECT'
 const NEXT_PAGE = 'score/NEXT_PAGE'
 const RESET = 'score/RESET'
-//액션 생성 함수
-// index -> 문제번호 , answer 누군지
+
+// 액션 생성 함수
 export function check({ isCorrect }) {
   return {
     type: CHECK_CORRECT,
@@ -32,30 +29,140 @@ export function reset() {
   }
 }
 
-// 초기상태
+// 초기 상태
 const initialState = {
   score: 0,
-  page: 0, // 0:인트로페이지, 1~quizs.length : 퀴즈페이지, quizs.length+1 : 마지막 페이지
+  page: 0, // 0: 인트로 페이지, 1 ~ quizs.length: 퀴즈 페이지, quizs.length + 1: 마지막 페이지
   quizs: [
     {
       q: '대한민국의 수도는?',
+      img: '/city/korea.jpg',
       a: [
         {
           text: '서울',
           isCorrect: true,
         },
         {
-          text: '대전',
+          text: '인천',
           isCorrect: false,
         },
         {
-          text: '광주',
+          text: '부산',
           isCorrect: false,
         },
       ],
     },
     {
       q: '미국의 수도는?',
+      img: '/city/us.jpg',
+      a: [
+        {
+          text: '샌프란시스코',
+          isCorrect: false,
+        },
+        {
+          text: '워싱턴 D.C',
+          isCorrect: true,
+        },
+        {
+          text: '뉴욕',
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      q: '미국의 수도는?',
+      img: '/city/us.jpg',
+      a: [
+        {
+          text: '샌프란시스코',
+          isCorrect: false,
+        },
+        {
+          text: '워싱턴 D.C',
+          isCorrect: true,
+        },
+        {
+          text: '뉴욕',
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      q: '미국의 수도는?',
+      img: '/city/us.jpg',
+      a: [
+        {
+          text: '샌프란시스코',
+          isCorrect: false,
+        },
+        {
+          text: '워싱턴 D.C',
+          isCorrect: true,
+        },
+        {
+          text: '뉴욕',
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      q: '미국의 수도는?',
+      img: '/city/us.jpg',
+      a: [
+        {
+          text: '샌프란시스코',
+          isCorrect: false,
+        },
+        {
+          text: '워싱턴 D.C',
+          isCorrect: true,
+        },
+        {
+          text: '뉴욕',
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      q: '미국의 수도는?',
+      img: '/city/us.jpg',
+      a: [
+        {
+          text: '샌프란시스코',
+          isCorrect: false,
+        },
+        {
+          text: '워싱턴 D.C',
+          isCorrect: true,
+        },
+        {
+          text: '뉴욕',
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      q: '미국의 수도는?',
+      img: '/city/us.jpg',
+      a: [
+        {
+          text: '샌프란시스코',
+          isCorrect: false,
+        },
+        {
+          text: '워싱턴 D.C',
+          isCorrect: true,
+        },
+        {
+          text: '뉴욕',
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      q: '미국의 수도는?',
+      img: '/city/us.jpg',
       a: [
         {
           text: '샌프란시스코',
@@ -74,7 +181,9 @@ const initialState = {
   ],
 }
 
+// 리듀서
 export default function score(state = initialState, action) {
+  console.log(action)
   switch (action.type) {
     case CHECK_CORRECT:
       return {
