@@ -31,6 +31,12 @@ const Score = styled.div`
   margin-bottom: 30px;
 `
 
+const Comment = styled.div`
+  font-size: 4em;
+  color: #cc0066;
+  margin-top: 50px;
+`
+
 function App() {
   const page = useSelector((state) => state.score.page)
   const quiz = useSelector((state) => state.score.quizs)
@@ -55,7 +61,9 @@ function App() {
         <Main>
           <Header>당신의 수도 퀴즈 점수는??</Header>
           <Score>{score}</Score>
+
           <PinkButton text="다시 시작하기" clickEvent={() => dispatch(reset())}></PinkButton>
+          <Comment>{score < 50 ? '정말 루저군요~' : '좀하는데?'}</Comment>
         </Main>
       )}
     </>
